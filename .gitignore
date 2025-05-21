@@ -1,0 +1,13 @@
+# Ignore LuaLS cache
+/lua/language-server/
+
+# Ignore swap/backup files
+*.swp
+*.bak
+*.undo
+
+# Ignore lazy.nvim lockfile
+lazy-lock.json
+
+# Optional: Ignore session files
+Session.vim
