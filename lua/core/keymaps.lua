@@ -8,3 +8,17 @@ vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Prev Diagnostic" }
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Next Diagnostic" })
 vim.keymap.set("n", "<leader>f", ":NvimTreeFocus<CR>" , {desc = "Focus File Tree"})
 vim.keymap.set("n", "<leader>n", ":NvimTreeFindFile<CR>", {desc = "Find Current File in Tree"})
+vim.keymap.set("i", "<C-H>", "<C-W>", { desc = "Delete word backward" })
+
+
+local themes = { "tokyonight", "catppuccin", "gruvbox", "rose-pine" }
+local current = 1
+
+vim.api.nvim_create_user_command("ThemeToggle", function()
+  current = (current % #themes) + 1
+  vim.cmd("colorscheme " .. themes[current])
+  vim.notify("Switched to " .. themes[current])
+end, {})
+-- Map <leader>t to toggle themes
+vim.keymap.set("n", "<leader>t", "<cmd>ThemeToggle<CR>", { desc = "Toggle Theme" })
+

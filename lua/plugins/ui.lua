@@ -1,12 +1,15 @@
 return {
     {
-        "folke/tokyonight.nvim",
-        lazy = false,
-        priority = 1000,
-        config = function()
-            vim.cmd.colorscheme("tokyonight")
-        end,
+    "folke/tokyonight.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+        vim.cmd.colorscheme("tokyonight")
+    end,
     },
+    {"catppuccin/nvim", name = "catppuccin"},
+    {"ellisonleao/gruvbox.nvim"},
+    { "rose-pine/neovim", name = "rose-pine" },
     
     {
         "nvim-tree/nvim-web-devicons",
