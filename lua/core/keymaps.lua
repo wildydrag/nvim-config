@@ -11,7 +11,7 @@ vim.keymap.set("n", "<leader>n", ":NvimTreeFindFile<CR>", {desc = "Find Current 
 vim.keymap.set("i", "<C-H>", "<C-W>", { desc = "Delete word backward" })
 
 
-local themes = { "tokyonight", "catppuccin", "gruvbox", "rose-pine" }
+local themes = { "tokyonight", "catppuccin", "gruvbox", "rose-pine", "nord", "nordic" }
 local current = 1
 
 vim.api.nvim_create_user_command("ThemeToggle", function()

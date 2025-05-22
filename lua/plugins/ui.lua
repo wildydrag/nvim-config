@@ -10,6 +10,15 @@ return {
     {"catppuccin/nvim", name = "catppuccin"},
     {"ellisonleao/gruvbox.nvim"},
     { "rose-pine/neovim", name = "rose-pine" },
+    {"shaunsingh/nord.nvim", name = "nord"},
+
+    {"AlexvZyl/nordic.nvim", name = "nordic",
+        lazy = false,
+        priority = 1000,
+        config = function()
+            require('nordic').load()
+        end,
+    },
     
     {
         "nvim-tree/nvim-web-devicons",
