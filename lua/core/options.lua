@@ -9,3 +9,12 @@ vim.o.cursorline = true
 vim.opt.termguicolors = true
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
+-- Set overall transparency (0.0 = fully transparent, 1.0 = opaque)
+vim.g.neovide_opacity = 0.8
+
+-- Enable blur for the transparent background
+vim.g.neovide_blur_amount_x = 2.0
+vim.g.neovide_blur_amount_y = 2.0
+
+-- Optional: smooth cursor
+vim.g.neovide_cursor_vfx_mode = "railgun"
