@@ -9,6 +9,9 @@ vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Next Diagnostic" }
 vim.keymap.set("n", "<leader>f", ":NvimTreeFocus<CR>" , {desc = "Focus File Tree"})
 vim.keymap.set("n", "<leader>n", ":NvimTreeFindFile<CR>", {desc = "Find Current File in Tree"})
 vim.keymap.set("i", "<C-H>", "<C-W>", { desc = "Delete word backward" })
+vim.keymap.set('n', '<leader>do', ':DiffviewOpen<CR>', { desc = "Open Diffview" })
+vim.keymap.set('n', '<leader>dc', ':DiffviewClose<CR>', { desc = "Close Diffview" })
+vim.keymap.set('n', '<leader>dh', ':DiffviewFileHistory<CR>', { desc = "File History" })
 
 
 local themes = { "tokyonight", "catppuccin", "gruvbox", "rose-pine", "nord", "nordic" }
