@@ -17,7 +17,10 @@ vim.keymap.set({'n', 'v'}, '<leader>P', '"+P', {desc = "Paste from system clipbo
 vim.keymap.set('n', '<leader>do', ':DiffviewOpen<CR>', { desc = "Open Diffview" })
 vim.keymap.set('n', '<leader>dc', ':DiffviewClose<CR>', { desc = "Close Diffview" })
 vim.keymap.set('n', '<leader>dh', ':DiffviewFileHistory<CR>', { desc = "File History" })
-
+vim.keymap.set('n', '<leader>r', ':RunCode<CR>', { noremap = true, silent = false })
+vim.keymap.set('n', '<leader>rf', ':RunFile<CR>', { noremap = true, silent = false })
+vim.keymap.set('n', '<leader>rp', ':RunProject<CR>', { noremap = true, silent = false })
+vim.keymap.set('n', '<leader>rc', ':RunClose<CR>', { noremap = true, silent = false })
 
 local themes = { "tokyonight", "catppuccin", "gruvbox", "rose-pine", "nord", "nordic" }
 local current = 1
