@@ -21,6 +21,7 @@ vim.keymap.set('n', '<leader>r', ':RunCode<CR>', { noremap = true, silent = fals
 vim.keymap.set('n', '<leader>rf', ':RunFile<CR>', { noremap = true, silent = false })
 vim.keymap.set('n', '<leader>rp', ':RunProject<CR>', { noremap = true, silent = false })
 vim.keymap.set('n', '<leader>rc', ':RunClose<CR>', { noremap = true, silent = false })
+vim.keymap.set("n", "<Leader>tt", "<cmd>ToggleTransparency<CR>", { desc = "Toggle Transparency" })
 
 local themes = { "tokyonight", "catppuccin", "gruvbox", "rose-pine", "nord", "nordic" }
 local current = 1
