@@ -1,7 +1,11 @@
 local lspconfig = require("lspconfig")
 
 -- Python
-lspconfig.pyright.setup {}
+lspconfig.pyright.setup({
+  python = {
+    pythonPath = "/home/emad-changizi/myenv/bin/python"
+  }
+})
 
 -- C/C++
 lspconfig.clangd.setup {}

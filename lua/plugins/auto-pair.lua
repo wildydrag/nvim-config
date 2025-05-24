@@ -5,3 +5,4 @@ return {
       opts = {}, -- default is fine
     }
 }
+
