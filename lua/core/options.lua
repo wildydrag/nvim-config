@@ -20,8 +20,14 @@ vim.g.neovide_opacity = 0.8
 -- Optional: smooth cursor
 vim.g.neovide_cursor_vfx_mode = "railgun"
 if vim.g.neovide then
+  -- Disable Neovide's built-in completion (use nvim-cmp instead)
+  vim.g.neovide_cursor_antialiasing = true
+  vim.g.neovide_refresh_rate = 60
+  -- Optional: Improve performance
+  vim.g.neovide_no_pty = false
   vim.g.neovide_input_ime = false
   vim.g.neovide_scale_factor = 1.0 -- Default scale (100%)
+  vim.g.neovide_cursor_animation_length = 0.1
 -- Neovide-specific settings (optional)
   vim.g.neovide_remember_window_size = true
   vim.opt.guifont = "CaskaydiaCove Nerd Font:h12" -- Set your font

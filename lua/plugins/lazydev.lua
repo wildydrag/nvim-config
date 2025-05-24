@@ -12,6 +12,7 @@ return {
   },
   { -- optional blink completion source for require statements and module annotations
     "saghen/blink.cmp",
+    enabled = false,
     dependencies = { 'rafamadriz/friendly-snippets' },
     version = '1.*',
     opts = {

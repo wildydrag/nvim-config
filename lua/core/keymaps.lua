@@ -28,22 +28,22 @@ vim.keymap.set("n", "<Leader>tb", "<cmd>ToggleBlur<CR>", { desc = "Toggle Transp
 vim.keymap.set("n", "<leader>mm", "<cmd>ToggleTransparencyNeo<CR>", {desc = "Toggle Transparency"})
 
 -- Use <Tab> and <S-Tab> to navigate popup menu
-vim.keymap.set("i", "<Tab>", function()
-  if vim.fn.pumvisible() == 1 then
-    return vim.api.nvim_replace_termcodes("<C-n>", true, true, true)
-  else
-    return "\t"
-  end
-end, { expr = true, noremap = true })
-
-vim.keymap.set("i", "<S-Tab>", function()
-  return vim.fn.pumvisible() == 1 and "<C-p>" or "<S-Tab>"
-end, { expr = true, noremap = true })
-
--- Use <CR> to confirm selection
-vim.keymap.set("i", "<CR>", function()
-  return vim.fn.pumvisible() == 1 and "<C-y>" or "<CR>"
-end, { expr = true, noremap = true })
+-- vim.keymap.set("i", "<Tab>", function()
+--   if vim.fn.pumvisible() == 1 then
+--     return vim.api.nvim_replace_termcodes("<C-n>", true, true, true)
+--   else
+--     return "\t"
+--   end
+-- end, { expr = true, noremap = true })
+--
+-- vim.keymap.set("i", "<S-Tab>", function()
+--   return vim.fn.pumvisible() == 1 and "<C-p>" or "<S-Tab>"
+-- end, { expr = true, noremap = true })
+--
+-- -- Use <CR> to confirm selection
+-- vim.keymap.set("i", "<CR>", function()
+--   return vim.fn.pumvisible() == 1 and "<C-y>" or "<CR>"
+-- end, { expr = true, noremap = true })
 
 
 local themes = { "tokyonight", "catppuccin", "gruvbox", "rose-pine", "nord", "nordic" }

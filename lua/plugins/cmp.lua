@@ -1,6 +1,6 @@
 return {
   "hrsh7th/nvim-cmp",
-  enabled = not vim.g.neovide,  -- disable in Neovide
+  -- enabled = not vim.g.neovide,  -- disable in Neovide
   dependencies = {
     "hrsh7th/cmp-nvim-lsp",
     "hrsh7th/cmp-buffer",
