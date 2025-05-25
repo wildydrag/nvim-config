@@ -8,6 +8,16 @@ return {
     },
     config = function()
       local dap = require("dap")
+
+    vim.fn.sign_define("DapBreakpoint", { text = "●", texthl = "DapBreakpoint", linehl = "", numhl = "" })
+    vim.api.nvim_set_hl(0, "DapBreakpoint", { fg = "#FFA500" })
+
+    vim.fn.sign_define("DapBreakpointCondition", { text = "◆", texthl = "DapBreakpointCondition", linehl = "", numhl = "" })
+    vim.fn.sign_define("DapLogPoint", { text = "◆", texthl = "DapLogPoint", linehl = "", numhl = "" })
+
+    vim.api.nvim_set_hl(0, "DapBreakpointCondition", { fg = "#FFA500" })
+    vim.api.nvim_set_hl(0, "DapLogPoint", { fg = "#FFD700" })  -- Gold
+
       local dapui = require("dapui")
 
       dapui.setup()
@@ -30,6 +40,19 @@ return {
             return "python"
           end,
         },
+      {
+        type = "python",
+        request = "launch",
+        name = "Debug Pytest Current File",
+        module = "pytest",
+        args = { "${file}" },
+        justMyCode = true,
+        console = "integratedTerminal",
+        pythonPath = function()
+          return "python"
+        end,
+      }
+
       }
 
       -- ⚙️ C/C++ (LLDB)
