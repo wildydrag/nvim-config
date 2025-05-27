@@ -26,6 +26,18 @@ vim.keymap.set("i", "<C-BS>", "<C-W>", { noremap = true, silent = true, desc = "
 vim.keymap.set("n", "<Leader>tt", "<cmd>ToggleTransparency<CR>", { desc = "Toggle Transparency" })
 vim.keymap.set("n", "<Leader>tb", "<cmd>ToggleBlur<CR>", { desc = "Toggle Transparency" })
 vim.keymap.set("n", "<leader>mm", "<cmd>ToggleTransparencyNeo<CR>", {desc = "Toggle Transparency"})
+vim.keymap.set("n", "<leader>fg", require('telescope.builtin').live_grep, {})
+
+
+-- Keymap to open Telescope Git commits picker
+vim.keymap.set('n', '<leader>gc', function()
+  require('telescope.builtin').git_commits()
+end, { desc = 'Telescope: Git commits' })
+
+ 
+vim.keymap.set('n', '<leader>gcf', function()
+  require('telescope.builtin').git_bcommits()
+end, { desc = 'Telescope: Git commits for current file' })
 
 vim.keymap.set("n", "<Leader>pt", function()
   require("dap").run(require("dap").configurations.python[2])

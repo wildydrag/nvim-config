@@ -5,4 +5,4 @@ require("core.lsp")
 require("core.tranparency")
 require("core.blur")
 require("core.neovide")
-
+require("core.diagram")
