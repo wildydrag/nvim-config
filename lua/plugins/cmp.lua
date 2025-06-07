@@ -1,24 +1,24 @@
 return {
   "hrsh7th/nvim-cmp",
-  -- enabled = not vim.g.neovide,  -- disable in Neovide
   dependencies = {
     "hrsh7th/cmp-nvim-lsp",
     "hrsh7th/cmp-buffer",
     "hrsh7th/cmp-path",
     "hrsh7th/cmp-cmdline",
-    "saadparwaiz1/cmp_luasnip",
     "L3MON4D3/LuaSnip",
+    "saadparwaiz1/cmp_luasnip",
     "rafamadriz/friendly-snippets",
   },
   config = function()
-
     local cmp_autopairs = require("nvim-autopairs.completion.cmp")
     local cmp = require("cmp")
     local luasnip = require("luasnip")
 
+    -- Load friendly-snippets
     require("luasnip.loaders.from_vscode").lazy_load()
 
-    cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done)
+    -- Integrate nvim-autopairs with cmp
+    cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 
     cmp.setup({
       snippet = {
@@ -27,6 +27,13 @@ return {
         end,
       },
       mapping = cmp.mapping.preset.insert({
+        ["<C-b>"] = cmp.mapping.scroll_docs(-4),
+        ["<C-f>"] = cmp.mapping.scroll_docs(4),
+        ["<C-Space>"] = cmp.mapping.complete(),
+        ["<C-e>"] = cmp.mapping.abort(),
+        ["<CR>"] = cmp.mapping.confirm({ select = true }),
+
+        -- Enhanced Tab/S-Tab navigation for luasnip
         ["<Tab>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
             cmp.select_next_item()
@@ -46,14 +53,10 @@ return {
             fallback()
           end
         end, { "i", "s" }),
-
-        ["<CR>"] = cmp.mapping.confirm({ select = true }),
-        ["<C-Space>"] = cmp.mapping.complete(),
       }),
       sources = cmp.config.sources({
         { name = "nvim_lsp" },
         { name = "luasnip" },
-        { name = "lazydev" }, -- Add this if using lazydev
       }, {
         { name = "buffer" },
         { name = "path" },
@@ -69,12 +72,28 @@ return {
             luasnip = "[Snip]",
             buffer = "[Buf]",
             path = "[Path]",
-            lazydev = "[LazyDev]",
           })[entry.source.name]
           return vim_item
         end,
       },
     })
-  end,
-}
 
+    -- Cmdline completions
+    cmp.setup.cmdline({ '/', '?' }, {
+      mapping = cmp.mapping.preset.cmdline(),
+      sources = {
+        { name = 'buffer' }
+      }
+    })
+
+    cmp.setup.cmdline(':', {
+      mapping = cmp.mapping.preset.cmdline(),
+      sources = cmp.config.sources({
+        { name = 'path' }
+      }, {
+        { name = 'cmdline' }
+      }),
+      matching = { disallow_symbol_nonprefix_matching = false }
+    })
+  end
+}
