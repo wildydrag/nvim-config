@@ -35,6 +35,7 @@ vim.keymap.set('n', '<leader>fb', telescope.buffers, { desc = 'Telescope buffers
 vim.keymap.set('n', '<leader>fh', telescope.help_tags, { desc = 'Telescope help tags' })
 vim.keymap.set('n', '<leader>fc', telescope.git_commits, { desc = 'Telescope: Git commits' })
 vim.keymap.set('n', '<leader>fbc', telescope.git_bcommits, { desc = 'Telescope: Git commits for current file' })
+vim.keymap.set('n', '<leader>fcs', telescope.colorscheme, {desc = 'Telescope: available color schemes'})
 --------------------------------------------------------------------------------------
 
 
