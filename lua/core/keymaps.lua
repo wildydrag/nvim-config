@@ -23,8 +23,8 @@ vim.keymap.set('n', '<leader>rf', ':RunFile<CR>', { noremap = true, silent = fal
 vim.keymap.set('n', '<leader>rp', ':RunProject<CR>', { noremap = true, silent = false })
 vim.keymap.set('n', '<leader>rc', ':RunClose<CR>', { noremap = true, silent = false })
 vim.keymap.set("i", "<C-BS>", "<C-W>", { noremap = true, silent = true, desc = "Delete word backward" })
-vim.keymap.set("n", "<Leader>tt", "<cmd>ToggleTransparency<CR>", { desc = "Toggle Transparency" })
-vim.keymap.set("n", "<Leader>tb", "<cmd>ToggleBlur<CR>", { desc = "Toggle Transparency" })
+vim.keymap.set("n", "<Leader>kk", "<cmd>ToggleTransparency<CR>", { desc = "Toggle Transparency" })
+vim.keymap.set("n", "<leader>bb", "<cmd>ToggleBlur<CR>", { desc = "Toggle Transparency" })
 vim.keymap.set("n", "<leader>mm", "<cmd>ToggleTransparencyNeo<CR>", {desc = "Toggle Transparency"})
 vim.keymap.set("n", "<leader>fg", require('telescope.builtin').live_grep, {})
 
@@ -47,7 +47,7 @@ vim.keymap.set("n", "<Leader>dt", function()
   require("nvim-dap-virtual-text").toggle()
 end, { desc = "Toggle Virtual Text" })
 
-vim.keymap.set("n", "<leader>th", "<cmd>ToggleHover<CR>", { desc = "Toggle Hover DAP" })
+vim.keymap.set("n", "<leader>ht", "<cmd>ToggleHover<CR>", { desc = "Toggle Hover DAP" })
 vim.keymap.set("n", "<RightMouse>",  "<cmd>ToggleHover<CR>", { desc = "Toggle Hover DAP with mouse" })
 
 
@@ -69,3 +69,38 @@ end, { silent = true, desc = "Toggle signature help" })
 vim.keymap.set("i", "<C-n>", function()
   require("lsp_signature").signature({ move_cursor_key = "<C-n>" })
 end, { silent = true, desc = "Cycle through overloads" })
+
+
+-- Movement between splits
+vim.keymap.set("n", "<leader>wh", "<C-w>h", { noremap = true, silent = true, desc = "Go Left" })
+vim.keymap.set("n", "<leader>wj", "<C-w>j", { noremap = true, silent = true , desc = "Go Down" })
+vim.keymap.set("n", "<leader>wk", "<C-w>k", { noremap = true, silent = true , desc = "Go Up"})
+vim.keymap.set("n", "<leader>wl", "<C-w>l", { noremap = true, silent = true, desc = "Go Right"})
+vim.keymap.set("n", "<leader>ww", "<C-w>w", { noremap = true, silent = true, desc = "Next Window" })
+
+-- Splitting
+vim.keymap.set("n", "<leader>wv", "<C-w>v", { noremap = true, silent = true, desc = "Split Vertical"})
+vim.keymap.set("n", "<leader>ws", "<C-w>s", { noremap = true, silent = true, desc = "Split Window"})
+vim.keymap.set("n", "<leader>wT", "<C-w>T", { noremap = true, silent = true, desc = "Split Window"})
+
+-- Resize
+vim.keymap.set("n", "<leader>w+", "<C-w>+", { noremap = true, silent = true, desc = "Increase height" })
+vim.keymap.set("n", "<leader>w-", "<C-w>-", { noremap = true, silent = true, desc = "Decrease height" })
+vim.keymap.set("n", "<leader>w<", "<C-w><", { noremap = true, silent = true, desc = "Decrease width" })
+vim.keymap.set("n", "<leader>w>", "<C-w>>", { noremap = true, silent = true, desc = "Increase width" })
+
+-- Window commands
+vim.keymap.set("n", "<leader>wq", "<C-w>q", { noremap = true, silent = true, desc = "Quit a window" })
+vim.keymap.set("n", "<leader>wo", "<C-w>o", { noremap = true, silent = true, desc = "Close all other windows" })
+vim.keymap.set("n", "<leader>wx", "<C-w>x", { noremap = true, silent = true, desc = "Swap current with next"})
+vim.keymap.set("n", "<leader>w=", "<C-w>=", { noremap = true, silent = true, desc = "Equal height and width"})
+vim.keymap.set("n", "<leader>w_", "<C-w>_", { noremap = true, silent = true, desc = "Max out the height"})
+vim.keymap.set("n", "<leader>w|", "<C-w>|", { noremap = true, silent = true, desc = "Max out the width"})
+
+-- Move window
+vim.keymap.set("n", "<leader>wH", "<C-w>H", { noremap = true, silent = true, desc = "Move window to far right"})
+vim.keymap.set("n", "<leader>wJ", "<C-w>J", { noremap = true, silent = true, desc = "Move window to far down"})
+vim.keymap.set("n", "<leader>wK", "<C-w>K", { noremap = true, silent = true, desc = "Move window to far top"})
+vim.keymap.set("n", "<leader>wL", "<C-w>L", { noremap = true, silent = true, desc = "Move window to far left"})
+
+
