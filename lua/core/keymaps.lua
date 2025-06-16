@@ -1,6 +1,4 @@
 vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>", { desc = "Toggle file explorer"})
-vim.keymap.set("n", "<leader>ff", ":Telescope find_files<CR>", { desc = "Find Files"})
-vim.keymap.set("n", "<leader>bj", "<cmd>Telescope jumplist<CR>", { desc = "Show jumplist (Telescope)" })
 vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to Definition" })
 vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Hover Info" })
 vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Rename" })
@@ -26,18 +24,19 @@ vim.keymap.set("i", "<C-BS>", "<C-W>", { noremap = true, silent = true, desc = "
 vim.keymap.set("n", "<Leader>kk", "<cmd>ToggleTransparency<CR>", { desc = "Toggle Transparency" })
 vim.keymap.set("n", "<leader>bb", "<cmd>ToggleBlur<CR>", { desc = "Toggle Transparency" })
 vim.keymap.set("n", "<leader>mm", "<cmd>ToggleTransparencyNeo<CR>", {desc = "Toggle Transparency"})
-vim.keymap.set("n", "<leader>fg", require('telescope.builtin').live_grep, {})
 
 
--- Keymap to open Telescope Git commits picker
-vim.keymap.set('n', '<leader>gc', function()
-  require('telescope.builtin').git_commits()
-end, { desc = 'Telescope: Git commits' })
+------------------------------------ Telescope ---------------------------------------
+local telescope = require('telescope.builtin')
+vim.keymap.set("n", "<leader>ff", telescope.find_files, { desc = "Find Files"})
+vim.keymap.set("n", "<leader>fj",telescope.jumplist, { desc = "Show jumplist (Telescope)" })
+vim.keymap.set("n", "<leader>fg", telescope.live_grep, {desc = "Telescope live grep"})
+vim.keymap.set('n', '<leader>fb', telescope.buffers, { desc = 'Telescope buffers' })
+vim.keymap.set('n', '<leader>fh', telescope.help_tags, { desc = 'Telescope help tags' })
+vim.keymap.set('n', '<leader>fc', telescope.git_commits, { desc = 'Telescope: Git commits' })
+vim.keymap.set('n', '<leader>fbc', telescope.git_bcommits, { desc = 'Telescope: Git commits for current file' })
+--------------------------------------------------------------------------------------
 
- 
-vim.keymap.set('n', '<leader>gcf', function()
-  require('telescope.builtin').git_bcommits()
-end, { desc = 'Telescope: Git commits for current file' })
 
 vim.keymap.set("n", "<Leader>pt", function()
   require("dap").run(require("dap").configurations.python[2])
