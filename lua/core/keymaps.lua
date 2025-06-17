@@ -30,12 +30,16 @@ vim.keymap.set("n", "<leader>mm", "<cmd>ToggleTransparencyNeo<CR>", {desc = "Tog
 local telescope = require('telescope.builtin')
 vim.keymap.set("n", "<leader>ff", telescope.find_files, { desc = "Find Files"})
 vim.keymap.set("n", "<leader>fj",telescope.jumplist, { desc = "Show jumplist (Telescope)" })
-vim.keymap.set("n", "<leader>fg", telescope.live_grep, {desc = "Telescope live grep"})
+vim.keymap.set("n", "<leader>fl", telescope.live_grep, {desc = "Telescope live grep"})
 vim.keymap.set('n', '<leader>fb', telescope.buffers, { desc = 'Telescope buffers' })
 vim.keymap.set('n', '<leader>fh', telescope.help_tags, { desc = 'Telescope help tags' })
-vim.keymap.set('n', '<leader>fc', telescope.git_commits, { desc = 'Telescope: Git commits' })
-vim.keymap.set('n', '<leader>fcb', telescope.git_bcommits, { desc = 'Telescope: Git commits for current file' })
-vim.keymap.set('n', '<leader>fcs', telescope.colorscheme, {desc = 'Telescope: available color schemes'})
+vim.keymap.set('n', '<leader>fs', telescope.grep_string, { desc = 'Telescope: Search Strings' })
+vim.keymap.set('n', '<leader>fo', telescope.oldfiles, { desc = 'Telescope: List previously open files' })
+vim.keymap.set('n', '<leader>ft', telescope.treesitter, { desc = 'Telescope: Lists Function names, variables, from Treesitter!' })
+vim.keymap.set('n', '<leader>fc', telescope.colorscheme, {desc = 'Telescope: available color schemes'})
+vim.keymap.set('n', '<leader>fg', telescope.git_commits, { desc = 'Telescope: Git commits' })
+vim.keymap.set('n', '<leader>fgc', telescope.git_bcommits, { desc = 'Telescope: Git commits for current file' })
+vim.keymap.set('n', '<leader>fgb', telescope.git_branches, { desc = 'Telescope: List all branches with log preview' })
 --------------------------------------------------------------------------------------
 
 
