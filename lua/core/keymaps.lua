@@ -5,11 +5,11 @@ vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Rename" })
 vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code Action" })
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Prev Diagnostic" })
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Next Diagnostic" })
-vim.keymap.set("n", "<leader>f", ":NvimTreeFocus<CR>" , {desc = "Focus File Tree"})
+vim.keymap.set("n", "<leader>nf", ":NvimTreeFocus<CR>" , {desc = "Focus File Tree"})
 vim.keymap.set("n", "<leader>n", ":NvimTreeFindFile<CR>", {desc = "Find Current File in Tree"})
 vim.keymap.set("i", "<C-H>", "<C-W>", { desc = "Delete word backward" })
-vim.keymap.set({'n', 'i', 'v', 'c'}, '<Esc><Esc>', '<Esc>:w<CR>', { noremap = true })
--- Keymaps for system clipboard
+vim.keymap.set({'n'}, '<BS><BS>', '<Esc>:w<CR>', { noremap = true, desc = "save the file"})
+
 vim.keymap.set({'n', 'v'}, '<leader>y', '"+y', {desc = "Yank to system clipboard"})
 vim.keymap.set({'n', 'v'}, '<leader>p', '"+p', {desc = "Paste from system clipboard"})
 vim.keymap.set({'n', 'v'}, '<leader>P', '"+P', {desc = "Paste from system clipboard (before)"})
@@ -34,7 +34,7 @@ vim.keymap.set("n", "<leader>fg", telescope.live_grep, {desc = "Telescope live g
 vim.keymap.set('n', '<leader>fb', telescope.buffers, { desc = 'Telescope buffers' })
 vim.keymap.set('n', '<leader>fh', telescope.help_tags, { desc = 'Telescope help tags' })
 vim.keymap.set('n', '<leader>fc', telescope.git_commits, { desc = 'Telescope: Git commits' })
-vim.keymap.set('n', '<leader>fbc', telescope.git_bcommits, { desc = 'Telescope: Git commits for current file' })
+vim.keymap.set('n', '<leader>fcb', telescope.git_bcommits, { desc = 'Telescope: Git commits for current file' })
 vim.keymap.set('n', '<leader>fcs', telescope.colorscheme, {desc = 'Telescope: available color schemes'})
 --------------------------------------------------------------------------------------
 
@@ -62,7 +62,7 @@ end, {})
 -- Map <leader>t to toggle themes
 vim.keymap.set("n", "<leader>t", "<cmd>ThemeToggle<CR>", { desc = "Toggle Theme" })
 
-vim.keymap.set({ "i", "n" }, "<C-s>", function()
+vim.keymap.set({ "i", "n" }, "<C-i>", function()
   require("lsp_signature").toggle_float_win()
 end, { silent = true, desc = "Toggle signature help" })
 
