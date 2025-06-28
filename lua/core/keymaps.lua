@@ -66,7 +66,7 @@ end, {})
 -- Map <leader>t to toggle themes
 vim.keymap.set("n", "<leader>t", "<cmd>ThemeToggle<CR>", { desc = "Toggle Theme" })
 
-vim.keymap.set({ "i", "n" }, "<C-i>", function()
+vim.keymap.set({ "i", "n" }, "<C-l>", function()
   require("lsp_signature").toggle_float_win()
 end, { silent = true, desc = "Toggle signature help" })
 
