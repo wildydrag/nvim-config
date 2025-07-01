@@ -10,6 +10,10 @@ vim.o.cursorline = true
 vim.opt.termguicolors = true
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
+
+-- views can only be fully collapsed with the global statusline
+vim.opt.laststatus = 3
+
 -- Set overall transparency (0.0 = fully transparent, 1.0 = opaque)
 vim.g.neovide_opacity = 0.8
 
