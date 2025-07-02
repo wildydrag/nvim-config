@@ -9,12 +9,15 @@ return {
   end,
   event = "VeryLazy",
   version = false,
--- Note: use environment variables in ~/.bashrc, ~/.zshrc, or .profile
--- export OPENAI_API_KEY="sk-..."
--- export GEMINI_API_KEY="..."
+  -- Note: use environment variables in ~/.bashrc, ~/.zshrc, or .profile
+  -- export OPENAI_API_KEY="sk-..."
+  -- export GEMINI_API_KEY="..."
   opts = {
-    provider = "openai", -- default provider (change to gemini if preferred)
+    -- Set your default provider to 'ollama'
+    provider = "ollama",
+
     providers = {
+      -- Keep your openai config if you still want to use it
       openai = {
         endpoint = "https://api.openai.com/v1",
         model = "gpt-4o", -- or "gpt-4-turbo", etc.
@@ -26,27 +29,56 @@ return {
           max_tokens = 10000,
         },
       },
-      -- gemini = {
-      --   model = "gemini-2.0-flash", -- or "models/gemini-1.5-flash:streamGenerateContent"
-      --   -- headers = {
-      --   --   -- Gemini uses API key via query param, so you don't usually set Authorization header
-      --   -- },
-      --   -- query = {
-      --   --   key = os.getenv("GEMINI_API_KEY"),
-      --   -- },
-      --   extra_request_body = {
-      --     contents = {
-      --       {
-      --         parts = {
-      --           { text = "__PROMPT__" }, -- __PROMPT__ will be replaced by Avante
-      --         },
-      --       },
-      --     },
-      --   },
-      --   extract_answer = function(res)
-      --     return res.candidates and res.candidates[1] and res.candidates[1].content.parts[1].text
-      --   end,
-      -- },
+
+      -- Add the Ollama provider configuration
+      ollama = {
+        -- Set the endpoint to your Ollama server's IP and port
+        -- Ollama's API is typically at /api, but avante.nvim seems to expect
+        -- a base endpoint like 'http://IP:PORT'
+        endpoint = "http://192.168.0.157:11434",
+        -- Specify the model name you created in Ollama
+        model = "deepseek-coder-33b",
+        -- You can add extra_request_body options if needed,
+        -- though Ollama handles many internally.
+        -- For example, to adjust temperature:
+        extra_request_body = {
+          temperature = 0.5, -- Adjust for more or less creative responses
+          -- num_ctx = 4096, -- Example: Adjust context window if model supports it
+          -- num_gpu_layers = 0, -- Example: Force CPU inference if needed for testing (0 layers on GPU)
+          -- You might need to experiment with max_tokens for Ollama,
+          -- as it can be sensitive to the model's max context.
+          -- max_tokens = 2048,
+        },
+        -- Avante.nvim might have specific requirements for parsing Ollama responses.
+        -- The example in avante.nvim's issue tracker suggests custom parse_response_data
+        -- and parse_curl_args functions for full compatibility.
+        -- If you encounter issues (e.g., incorrect diffs, no context), you might need to
+        -- add these more advanced parsing functions.
+        -- For now, let's start simple, as Avante's Ollama support has improved.
+        -- If needed, refer to Avante's GitHub discussions/wiki for advanced Ollama config.
+        -- parse_response_data = function(data_stream, event_state, opts)
+        --   -- This is complex and might be needed for full feature support (e.g., diffs)
+        --   -- Refer to avante.nvim's source or issues for the correct implementation
+        --   require('avante.providers').copilot.parse_response(data_stream, event_state, opts)
+        -- end,
+        -- parse_curl_args = function(opts, code_opts)
+        --   -- This is also complex, for customizing the API request to Ollama
+        --   -- Refer to avante.nvim's source or issues for the correct implementation
+        --   return {
+        --     url = opts.endpoint .. '/chat/completions', -- Ollama's chat endpoint
+        --     headers = {
+        --       ['Accept'] = 'application/json',
+        --       ['Content-Type'] = 'application/json',
+        --     },
+        --     body = {
+        --       model = opts.model,
+        --       messages = require('avante.providers').copilot.parse_messages(code_opts),
+        --       max_tokens = 2048, -- Example max_tokens, adjust as needed
+        --       stream = true,
+        --     },
+        --   }
+        -- end,
+      },
     },
   },
   dependencies = {
@@ -83,5 +115,3 @@ return {
     },
   },
 }
-
-
