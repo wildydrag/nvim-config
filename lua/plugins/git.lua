@@ -1,4 +1,13 @@
 return {
+  -- Neogit
+  {
+    'NeogitOrg/neogit',
+    dependencies = {
+      'nvim-lua/plenary.nvim', -- Required by neogit
+      'sindrets/diffview.nvim', -- Recommended for better diffing within Neogit
+    },
+    config = true -- Uses default config, you can pass a table for custom settings
+  },
   {
     "lewis6991/gitsigns.nvim",
     config = function()
