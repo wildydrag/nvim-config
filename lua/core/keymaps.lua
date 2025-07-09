@@ -43,13 +43,9 @@ vim.keymap.set('n', '<leader>fgb', telescope.git_branches, { desc = 'Telescope: 
 --------------------------------------------------------------------------------------
 
 
-vim.keymap.set("n", "<Leader>pt", function()
-  require("dap").run(require("dap").configurations.python[2])
-end, { desc = "Debug Pytest Current File" })
+------------------------------------ dap ---------------------------------------
 
-vim.keymap.set("n", "<Leader>dt", function()
-  require("nvim-dap-virtual-text").toggle()
-end, { desc = "Toggle Virtual Text" })
+--------------------------------------------------------------------------------------
 
 vim.keymap.set("n", "<leader>ht", "<cmd>ToggleHover<CR>", { desc = "Toggle Hover DAP" })
 vim.keymap.set("n", "<RightMouse>",  "<cmd>ToggleHover<CR>", { desc = "Toggle Hover DAP with mouse" })
@@ -85,7 +81,7 @@ vim.keymap.set("n", "<leader>ww", "<C-w>w", { noremap = true, silent = true, des
 -- Splitting
 vim.keymap.set("n", "<leader>wv", "<C-w>v", { noremap = true, silent = true, desc = "Split Vertical"})
 vim.keymap.set("n", "<leader>ws", "<C-w>s", { noremap = true, silent = true, desc = "Split Window"})
-vim.keymap.set("n", "<leader>wT", "<C-w>T", { noremap = true, silent = true, desc = "Split Window"})
+vim.keymap.set("n", "<leader>wT", "<C-w>T", { noremap = true, silent = true, desc = "Break out into a new tab"})
 
 -- Resize
 vim.keymap.set("n", "<leader>w+", "<C-w>+", { noremap = true, silent = true, desc = "Increase height" })

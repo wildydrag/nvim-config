@@ -129,6 +129,15 @@ return {
       vim.keymap.set("n", "<F7>", dap.step_into, { desc = "Step Into" })
       vim.keymap.set("n", "<F8>", dap.step_out, { desc = "Step Out" })
       vim.keymap.set("n", "<Leader>b", dap.toggle_breakpoint, { desc = "Toggle Breakpoint" })
+
+      vim.keymap.set("n", "<Leader>dp", function()
+        require("dap").run(require("dap").configurations.python[2])
+      end, { desc = "Debug Pytest Current File" })
+
+      vim.keymap.set("n", "<Leader>dt", function()
+        require("nvim-dap-virtual-text").toggle()
+      end, { desc = "Toggle Virtual Text" })
+
       vim.keymap.set("n", "<Leader>B", function()
         dap.set_breakpoint(vim.fn.input("Breakpoint condition: "))
       end, { desc = "Set Conditional Breakpoint" })
