@@ -18,17 +18,17 @@ return {
 
     providers = {
       -- Keep your openai config if you still want to use it
-      openai = {
-        endpoint = "https://api.openai.com/v1",
-        model = "gpt-4o", -- or "gpt-4-turbo", etc.
-        headers = {
-          Authorization = "Bearer " .. os.getenv("OPENAI_API_KEY"),
-        },
-        extra_request_body = {
-          temperature = 0.7,
-          max_tokens = 10000,
-        },
-      },
+      -- openai = {
+      --   endpoint = "https://api.openai.com/v1",
+      --   model = "gpt-4o", -- or "gpt-4-turbo", etc.
+      --   headers = {
+      --     Authorization = "Bearer " .. os.getenv("OPENAI_API_KEY"),
+      --   },
+      --   extra_request_body = {
+      --     temperature = 0.7,
+      --     max_tokens = 10000,
+      --   },
+      -- },
 
       -- Add the Ollama provider configuration
       ollama = {
