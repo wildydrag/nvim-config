@@ -62,14 +62,6 @@ end, {})
 -- Map <leader>t to toggle themes
 vim.keymap.set("n", "<leader>t", "<cmd>ThemeToggle<CR>", { desc = "Toggle Theme" })
 
-vim.keymap.set({ "i", "n" }, "<C-l>", function()
-  require("lsp_signature").toggle_float_win()
-end, { silent = true, desc = "Toggle signature help" })
-
-vim.keymap.set("i", "<C-n>", function()
-  require("lsp_signature").signature({ move_cursor_key = "<C-n>" })
-end, { silent = true, desc = "Cycle through overloads" })
-
 
 -- Movement between splits
 vim.keymap.set("n", "<leader>wh", "<C-w>h", { noremap = true, silent = true, desc = "Go Left" })
