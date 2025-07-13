@@ -25,6 +25,14 @@ vim.keymap.set("n", "<Leader>kk", "<cmd>ToggleTransparency<CR>", { desc = "Toggl
 vim.keymap.set("n", "<leader>bb", "<cmd>ToggleBlur<CR>", { desc = "Toggle Transparency" })
 vim.keymap.set("n", "<leader>mm", "<cmd>ToggleTransparencyNeo<CR>", {desc = "Toggle Transparency"})
 
+vim.keymap.set('n', '<Esc>', function()
+  if vim.v.hlsearch == 1 then
+    vim.cmd.nohlsearch()
+  else
+    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<Esc>', true, false, true), 'n', false)
+  end
+end, { desc = 'Smart Esc: clear highlights or normal Esc' })
+
 
 ------------------------------------ Telescope ---------------------------------------
 local telescope = require('telescope.builtin')
