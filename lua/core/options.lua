@@ -14,6 +14,12 @@ vim.g.maplocalleader = "\\"
 -- views can only be fully collapsed with the global statusline
 vim.opt.laststatus = 3
 
+-- Folds
+-- Enable Tree-sitter folding
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.opt.foldenable = true
+
 -- Set overall transparency (0.0 = fully transparent, 1.0 = opaque)
 vim.g.neovide_opacity = 0.8
 
