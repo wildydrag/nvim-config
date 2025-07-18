@@ -7,7 +7,7 @@ vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Prev Diagnostic" }
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Next Diagnostic" })
 vim.keymap.set("n", "<leader>nf", ":NvimTreeFocus<CR>" , {desc = "Focus File Tree"})
 vim.keymap.set("n", "<leader>n", ":NvimTreeFindFile<CR>", {desc = "Find Current File in Tree"})
-vim.keymap.set("i", "<C-H>", "<C-W>", { desc = "Delete word backward" })
+vim.keymap.set({'i', 'c'}, "<C-H>", "<C-W>", { desc = "Delete word backward" })
 vim.keymap.set({'n'}, '<BS><BS>', '<Esc>:w<CR>', { noremap = true, desc = "save the file"})
 
 vim.keymap.set({'n', 'v'}, '<leader>y', '"+y', {desc = "Yank to system clipboard"})
@@ -24,6 +24,7 @@ vim.keymap.set("i", "<C-BS>", "<C-W>", { noremap = true, silent = true, desc = "
 vim.keymap.set("n", "<Leader>kk", "<cmd>ToggleTransparency<CR>", { desc = "Toggle Transparency" })
 vim.keymap.set("n", "<leader>bb", "<cmd>ToggleBlur<CR>", { desc = "Toggle Transparency" })
 vim.keymap.set("n", "<leader>mm", "<cmd>ToggleTransparencyNeo<CR>", {desc = "Toggle Transparency"})
+
 
 vim.keymap.set('n', '<Esc>', function()
   if vim.v.hlsearch == 1 then
