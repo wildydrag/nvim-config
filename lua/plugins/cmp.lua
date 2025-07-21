@@ -8,6 +8,7 @@ return {
     "L3MON4D3/LuaSnip",
     "saadparwaiz1/cmp_luasnip",
     "rafamadriz/friendly-snippets",
+    "rcarriga/cmp-dap", -- <- Add this
   },
   config = function()
     local cmp_autopairs = require("nvim-autopairs.completion.cmp")
@@ -94,6 +95,12 @@ return {
         { name = 'cmdline' }
       }),
       matching = { disallow_symbol_nonprefix_matching = false }
+    })
+    -- setup for DAP completion (REPL and expressions)
+    cmp.setup.filetype({ "dap-repl", "dapui_watches", "dapui_hover" }, {
+      sources = {
+        { name = "dap" }
+      }
     })
   end
 }

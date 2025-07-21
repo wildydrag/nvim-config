@@ -64,16 +64,24 @@ return {
       })
       vim.keymap.set("n", "<leader>tg", function() lazygit:toggle() end, { desc = "Toggle Lazygit" })
 
-      -- 🧼 Clean quitting and shortcuts
-      vim.api.nvim_create_autocmd("TermOpen", {
-        pattern = "term://*",
-        callback = function()
-          vim.cmd("startinsert")
-          vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], { buffer = 0 })
-          vim.keymap.set("n", "q", "<cmd>bd!<CR>", { buffer = 0 })
-          vim.keymap.set("t", "qq", [[<C-\><C-n><cmd>bd!<CR>]], { buffer = 0 })
-        end,
-      })
+      -- -- 🧼 Clean quitting and shortcuts
+        vim.api.nvim_create_autocmd("TermOpen", {
+          pattern = "term://*",
+          callback = function(args)
+            local buf = args.buf
+            local chan_id = vim.b[buf].terminal_job_id
+            local cmd = vim.api.nvim_buf_get_name(buf)
+
+            -- Skip esc mapping for lazygit
+            if not cmd:lower():find("lazygit") then
+              vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], { buffer = buf })
+            end
+
+            vim.keymap.set("n", "q", "<cmd>bd!<CR>", { buffer = buf })
+            vim.keymap.set("t", "qq", [[<C-\><C-n><cmd>bd!<CR>]], { buffer = buf })
+            vim.cmd("startinsert")
+          end,
+        })
 
       -- 🔼 Optional: Resize mappings (can be in your general config too)
       vim.keymap.set("n", "<C-Up>", ":resize -2<CR>", { silent = true })

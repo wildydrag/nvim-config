@@ -51,6 +51,19 @@ return {
         pythonPath = function()
           return "python"
         end,
+      },
+
+      {
+        type = "python",
+        request = "launch",
+        name = "CrouseLD",
+        program = "${file}",
+        justMyCode = true,
+        console = "integratedTerminal",
+        pythonPath = function()
+          return "python"
+        end,
+        cwd = "/home/emad-changizi/personal/crouse/crouseLD"
       }
 
       }
