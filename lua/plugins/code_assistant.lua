@@ -35,7 +35,7 @@ return {
         -- Set the endpoint to your Ollama server's IP and port
         -- Ollama's API is typically at /api, but avante.nvim seems to expect
         -- a base endpoint like 'http://IP:PORT'
-        endpoint = "http://192.168.0.157:11434",
+        endpoint = "http://192.168.0.154:11434",
         -- Specify the model name you created in Ollama
         model = "deepseek-coder-33b",
         -- You can add extra_request_body options if needed,

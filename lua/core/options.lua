@@ -8,8 +8,18 @@ vim.opt.clipboard:append("unnamedplus") -- Use + register for all operations
 vim.o.cursorline = true
 -- vim.o.completeopt = 'menu,menuone,noinsert,noselect'
 vim.opt.termguicolors = true
+vim.opt.signcolumn = "yes"
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
+
+
+vim.g.browser_search_engines = {
+  default = "https://google.com/?q=%s",
+  duckduckgo = "https://duckduckgo.com/?q=%s",
+  github = "https://github.com/search?q=%s",
+  stackoverflow = "https://stackoverflow.com/search?q=%s",
+}
+vim.g.browser_search_default_engine = "default"
 
 -- views can only be fully collapsed with the global statusline
 vim.opt.laststatus = 3

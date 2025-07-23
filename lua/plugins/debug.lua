@@ -14,14 +14,42 @@ return {
 
     vim.fn.sign_define("DapBreakpointCondition", { text = "◆", texthl = "DapBreakpointCondition", linehl = "", numhl = "" })
     vim.fn.sign_define("DapLogPoint", { text = "◆", texthl = "DapLogPoint", linehl = "", numhl = "" })
+    vim.fn.sign_define("DapStopped", { text = "→", texthl = "DapStopped", linehl = "DapStoppedLine", numhl = "DapStoppedNum" })
 
-    vim.api.nvim_set_hl(0, "DapBreakpointCondition", { fg = "#FFA500" })
+  -- Highlight groups
+    vim.api.nvim_set_hl(0, "DapBreakpoint", { fg = "#FFA500" })  -- Orange
+    vim.api.nvim_set_hl(0, "DapBreakpointCondition", { fg = "#FFA500" })  -- Orange
     vim.api.nvim_set_hl(0, "DapLogPoint", { fg = "#FFD700" })  -- Gold
+    vim.api.nvim_set_hl(0, "DapStopped", { fg = "#00FF00", bold = true })  -- Bright green
+    vim.api.nvim_set_hl(0, "DapStoppedLine", { bg = "#3a3a3a" })  -- Dark gray background for the line
+    vim.api.nvim_set_hl(0, "DapStoppedNum", { fg = "#00FF00", bg = "#3a3a3a" })  -- Green for line number
+
 
       local dapui = require("dapui")
 
       dapui.setup()
-      require("nvim-dap-virtual-text").setup()
+      -- Cleaner virtual text
+      require("nvim-dap-virtual-text").setup({
+        enabled = true,
+        highlight_changed_variables = true,
+        highlight_new_as_changed = true,
+        commented = false,
+        only_first_definition = true,  -- Only show vars where they're first defined
+        all_references = false,       -- Don't show all references
+        virt_text_pos = "eol",        -- Show at end of line (cleaner)
+        display_callback = function(variable, _buf, _stackframe, _node)
+          -- Skip internal/underscore vars
+          if variable.name:sub(1, 1) == "_" then
+            return nil
+          end
+          -- Trim long values
+          local value = variable.value
+          if type(value) == "string" and #value > 30 then
+            value = value:sub(1, 30) .. "..."
+          end
+          return variable.name .. " = " .. value
+        end,
+      })
 
       -- 🐍 Python (debugpy)
       dap.adapters.python = {
