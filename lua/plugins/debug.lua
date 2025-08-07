@@ -58,16 +58,31 @@ return {
         args = { "-m", "debugpy.adapter" },
       }
 
-      dap.configurations.python = {
-        {
-          type = "python",
-          request = "launch",
-          name = "Launch File",
-          program = "${file}",
-          pythonPath = function()
-            return "python"
-          end,
-        },
+    dap.configurations.python = {
+      {
+        type = "python",
+        request = "launch",
+        name = "Launch File",
+        program = "${file}",
+        pythonPath = function()
+          return "python"
+        end,
+        args = {},  -- This can be empty if you want to specify args when launching
+      },
+      {
+        type = "python",
+        request = "launch",
+        name = "Launch File with Args",
+        program = "${file}",
+        pythonPath = function()
+          return "python"
+        end,
+        args = function()
+          local args_string = vim.fn.input('Program arguments: ')
+          return vim.split(args_string, ' ')
+        end,
+        console = "integratedTerminal",
+      },
       {
         type = "python",
         request = "launch",
@@ -80,7 +95,6 @@ return {
           return "python"
         end,
       },
-
       {
         type = "python",
         request = "launch",
@@ -92,9 +106,26 @@ return {
           return "python"
         end,
         cwd = "/home/emad-changizi/personal/crouse/crouseLD"
+      },
+      -- Add your specific configuration for the training command
+      {
+        type = "python",
+        request = "launch",
+        name = "Train LaneAtt",
+        program = "${file}",
+        args = {
+          "train",
+          "--exp_name", "laneatt_r34_vil100_9",
+          "--cfg", "cfgs/temporal_vil100_resnet34.yml"
+        },
+        pythonPath = function()
+          return "python"
+        end,
+        cwd = "${workspaceFolder}",
+        console = "integratedTerminal",
+        justMyCode = true,
       }
-
-      }
+    }
 
       -- ⚙️ C/C++ (LLDB)
       dap.adapters.lldb = {
