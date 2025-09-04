@@ -18,7 +18,7 @@ vim.keymap.set('n', '<leader>dc', ':DiffviewClose<CR>', { desc = "Close Diffview
 vim.keymap.set('n', '<leader>dh', ':DiffviewFileHistory<CR>', { desc = "File History" })
 vim.keymap.set("i", "<C-BS>", "<C-W>", { noremap = true, silent = true, desc = "Delete word backward" })
 vim.keymap.set("n", "<Leader>kk", "<cmd>ToggleTransparency<CR>", { desc = "Toggle Transparency" })
-vim.keymap.set("n", "<leader>bb", "<cmd>ToggleBlur<CR>", { desc = "Toggle Transparency" })
+-- vim.keymap.set("n", "<leader>bb", "<cmd>ToggleBlur<CR>", { desc = "Toggle Transparency" })
 vim.keymap.set("n", "<leader>mm", "<cmd>ToggleTransparencyNeo<CR>", {desc = "Toggle Transparency"})
 
 

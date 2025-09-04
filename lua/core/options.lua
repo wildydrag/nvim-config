@@ -72,7 +72,7 @@ if vim.g.neovide then
       vim.g.neovide_scale_factor = vim.g.neovide_scale_factor - 0.1
     end
   end)
-  vim.keymap.set("n", "<leader>fs", function()
+  vim.keymap.set("n", "<leader>rs", function()
     vim.o.guifont = "CaskaydiaCove Nerd Font:h12" -- Reset to default
     vim.g.neovide_scale_factor = 1.0 -- Reset UI scale
   end, { desc = "Reset font size" })
